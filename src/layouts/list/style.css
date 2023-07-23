@@ -4,7 +4,8 @@
   padding: 14px 0 13px 15px !important;
   position: relative;
   top: -20px;
-  color: white !important;
+  color: #5e60ce !important;
+  font-weight: bold;
 }
 .todoInput::placeholder {
   color: #808080 !important;
