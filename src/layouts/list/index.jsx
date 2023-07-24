@@ -34,7 +34,11 @@ const TodoList = () => {
     setTodos([...todos]);
     setInputValue("");
   };
-
+  const handleCheck = (e) => {
+    console.log(e.target);
+    e.target.parentElement.parentElement.classList.toggle("btnStyle");
+    e.target.classList.toggle("btnStyleCheck");
+  };
   return (
     <div style={{ backgroundColor: "#1A1A1A", padding: "1px 50px 363px 0" }}>
       <Container>
@@ -52,7 +56,6 @@ const TodoList = () => {
               aria-label="Username"
               aria-describedby="basic-addon1"
               value={inputValue}
-              required
             />
             {errorStatus && (
               <p className="error-message text-danger m-0">
@@ -135,7 +138,38 @@ const TodoList = () => {
                 <Col xs={2}></Col>
                 <Col xs={8}>
                   <ListGroup.Item className="listItem">
-                    <p>{todo.todoText}</p>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                      onClick={(e)=>handleCheck(e)}
+                    >
+                      <button className="checkBtn" >
+                        <svg
+                          className="checked"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                          style={{
+                            color: "#333333",
+                            backgroundColor: "#333333",
+                            borderRadius: "50%",
+                          }}
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M4.5 12.75l6 6 9-13.5"
+                          />
+                        </svg>
+                      </button>
+                      <p style={{ paddingLeft: "8px" }}>{todo.todoText}</p>
+                    </div>
                     <div className="btns">
                       <div
                         className="editBtn"
