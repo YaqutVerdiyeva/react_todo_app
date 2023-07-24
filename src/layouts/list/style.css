@@ -1,3 +1,22 @@
+body::-webkit-scrollbar {
+  width: 11px;
+}
+body::-webkit-scrollbar-track {
+  background: #000;
+}
+body::-webkit-scrollbar-thumb {
+  background: -webkit-linear-gradient(#4ea8de, #5e60ce);
+  border-radius: 25px;
+}
+.todoErrorInput {
+  background-color: #262626 !important;
+  border: 2px solid brown !important;
+  padding: 14px 0 13px 15px !important;
+  position: relative;
+  top: -20px;
+  color: #5e60ce !important;
+  font-weight: bold;
+}
 .todoInput {
   background-color: #262626 !important;
   border: 1px solid transparent !important;
@@ -30,6 +49,21 @@
   align-items: center;
   gap: 6px;
 }
+.todoErrorBtn {
+  position: relative;
+  top: -20px;
+  padding: 15px 0px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
 .todoBtn:hover {
   background-color: #4ea8de;
   transition: 0.4s;
@@ -45,22 +79,27 @@
   display: flex !important;
   justify-content: space-between;
 }
-.listItem p{
-    margin: 0;
+.listItem p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  background: -webkit-linear-gradient(left, #4ea8de, #5e60ce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.listItem .btns{
+.listItem .btns {
   display: flex;
 }
-.listItem .btns svg{
-margin-left: 8px;
-color: grey;
-cursor: pointer;
+.listItem .btns svg {
+  margin-left: 8px;
+  color: grey;
+  cursor: pointer;
 }
-.listItem .btns .editBtn svg:hover{
-color: green;
-transition: 0.4s;
+.listItem .btns .editBtn svg:hover {
+  color: green;
+  transition: 0.4s;
 }
-.listItem .btns .deleteBtn svg:hover{
-color: #e25858;
-transition: 0.4s;
+.listItem .btns .deleteBtn svg:hover {
+  color: #e25858;
+  transition: 0.4s;
 }

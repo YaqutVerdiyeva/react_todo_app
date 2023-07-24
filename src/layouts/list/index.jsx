@@ -7,10 +7,15 @@ const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [editBtnId, setEditBtnId] = useState("");
   const [editStatus, setEditStatus] = useState(false);
+  const [errorStatus, setErrorStatus] = useState(false);
 
   const handleAddBtn = () => {
-    setTodos([...todos, { todoId: v4(12), todoText: inputValue }]);
-    setInputValue("");
+    if (inputValue) {
+      setTodos([...todos, { todoId: v4(12), todoText: inputValue }]);
+      setInputValue("");
+    } else {
+      setErrorStatus(true);
+    }
   };
   const handleDeleteBtn = (e) => {
     let updatedTodos = todos.filter((todo) => todo.todoId !== e.target.id);
@@ -29,6 +34,7 @@ const TodoList = () => {
     setTodos([...todos]);
     setInputValue("");
   };
+
   return (
     <div style={{ backgroundColor: "#1A1A1A", padding: "1px 50px 363px 0" }}>
       <Container>
@@ -36,13 +42,38 @@ const TodoList = () => {
           <Col xs={2}></Col>
           <Col xs={6}>
             <Form.Control
-              onChange={(e) => setInputValue(e.target.value)}
-              className="todoInput"
+              onChange={(e) => {
+                setErrorStatus(false);
+                setInputValue(e.target.value);
+              }}
+              id="todoInput"
+              className={errorStatus ? "todoErrorInput" : "todoInput"}
               placeholder="Add a new Task"
               aria-label="Username"
               aria-describedby="basic-addon1"
               value={inputValue}
+              required
             />
+            {errorStatus && (
+              <p className="error-message text-danger m-0">
+                <svg
+                  style={{ width: "20px", marginRight: "5px" }}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                  />
+                </svg>
+                Input can not be empty!
+              </p>
+            )}
           </Col>
           <Col xs={2}>
             {!editStatus ? (
@@ -50,7 +81,7 @@ const TodoList = () => {
                 onClick={() => {
                   handleAddBtn();
                 }}
-                className="todoBtn"
+                className={errorStatus ? "todoErrorBtn" : "todoBtn"}
               >
                 Create
                 <svg
