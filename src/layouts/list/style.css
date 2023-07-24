@@ -34,11 +34,9 @@
   background-color: #4ea8de;
   transition: 0.4s;
 }
-.listGroup {
-  margin-top: 40px;
-  gap: 10px;
-}
+
 .listItem {
+  margin-top: 20px;
   padding: 13px !important;
   border-radius: 5px !important;
   background-color: #333333 !important;
@@ -50,15 +48,19 @@
 .listItem p{
     margin: 0;
 }
+.listItem .btns{
+  display: flex;
+}
 .listItem .btns svg{
 margin-left: 8px;
 color: grey;
+cursor: pointer;
 }
-.listItem .btns svg:first-child:hover{
+.listItem .btns .editBtn svg:hover{
 color: green;
 transition: 0.4s;
 }
-.listItem .btns svg:last-child:hover{
+.listItem .btns .deleteBtn svg:hover{
 color: #e25858;
 transition: 0.4s;
 }
