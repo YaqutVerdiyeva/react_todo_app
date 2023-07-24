@@ -144,9 +144,9 @@ const TodoList = () => {
                         justifyContent: "center",
                         alignItems: "center",
                       }}
-                      onClick={(e)=>handleCheck(e)}
+                      onClick={(e) => handleCheck(e)}
                     >
-                      <button className="checkBtn" >
+                      <button className="checkBtn">
                         <svg
                           className="checked"
                           xmlns="http://www.w3.org/2000/svg"
